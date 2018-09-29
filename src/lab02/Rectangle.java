@@ -8,6 +8,7 @@ public class Rectangle extends Shape
     {
         return false;
     }
+
     public Rectangle getBound()
     {
         return this;
@@ -21,6 +22,11 @@ public class Rectangle extends Shape
     public double getPerimeter()
     {
         return 2 * (width + height);
+    }
+
+    public Rectangle(int w, int h)
+    {
+        this(0, 0, w, h);
     }
 
     public Rectangle(int x, int y, int w, int h)

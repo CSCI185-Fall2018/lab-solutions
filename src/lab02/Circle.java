@@ -12,17 +12,27 @@ public class Circle extends Shape
 
     public Rectangle getBound()
     {
-        return new Rectangle(x, y, 2*radius, 2*radius);
+        return new Rectangle(position.x, position.y, 2*radius, 2*radius);
     }
 
     public double getArea()
     {
-        return 0;
+        return Math.PI * radius * radius;
     }
 
     public double getPerimeter()
     {
-        return 0;
+        return 2 * Math.PI * radius;
+    }
+
+    public double getCircumference()
+    {
+        return getPerimeter();
+    }
+
+    public Circle(int r)
+    {
+        this(0, 0, r);
     }
 
     public Circle(int x, int y, int r)
