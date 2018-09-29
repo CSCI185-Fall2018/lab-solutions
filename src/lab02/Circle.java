@@ -7,12 +7,16 @@ public class Circle extends Shape
 
     public boolean draw(int x, int y)
     {
-        return false;
+        double distance = new Point(x, y).distance(position);
+        if (filled)
+            return distance <= radius;
+        else
+            return Math.abs(distance - radius) <= 1;
     }
 
     public Rectangle getBound()
     {
-        return new Rectangle(position.x, position.y, 2*radius, 2*radius);
+        return new Rectangle(position.x-radius, position.y-radius, 2*radius+1, 2*radius+1);
     }
 
     public double getArea()

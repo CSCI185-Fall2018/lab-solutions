@@ -2,11 +2,15 @@ package lab02;
 
 public class Rectangle extends Shape
 {
-    protected int width, height;
+    protected final int width, height;
+    protected final Point corner;
 
     public boolean draw(int x, int y)
     {
-        return false;
+        if(filled)
+            return position.x <= x && x <= corner.x && position.y <= y && y <= corner.y;
+        else
+            return position.x == x || x == corner.x || position.y == y || y == corner.y;
     }
 
     public Rectangle getBound()
@@ -32,7 +36,7 @@ public class Rectangle extends Shape
     public Rectangle(int x, int y, int w, int h)
     {
         super(x, y);
-        this.width = w;
-        this.height = h;
+        this.width = w; this.height = h;
+        this.corner = position.offset(width-1, height-1);
     }
 }
