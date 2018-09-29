@@ -29,5 +29,4 @@ public abstract class Shape implements Measurable, Drawable
         }
     }
 
-
 }

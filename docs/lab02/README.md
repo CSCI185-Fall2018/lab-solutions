@@ -33,8 +33,8 @@ Create a `Canvas` class with the following attributes and classes: At the same t
 - shapes: Shape[]
 - width: int
 - height: int
-- marker: char
-- fill: char
+- foreground: char
+- background: char
 
 + Canvas()
 + Canvas(max_shapes: int)
@@ -45,4 +45,38 @@ Create a `Canvas` class with the following attributes and classes: At the same t
 + getWidth(): int
 + getHeight(): int
 + draw(): void
+```
+
+#### Example
+``` java
+Canvas canvas = new Canvas(20, 20);
+canvas.setBackground('-');
+
+canvas.add(new Rectangle(2, 4));
+canvas.add(new Rectangle(6, 2));
+canvas.add(new Circle(8, 8, 4));
+canvas.add(new Rectangle(0, 16, 20, 4));
+```
+
+```
+******--------------
+******--------------
+**------------------
+**------------------
+--------*-----------
+------*****---------
+-----*******--------
+-----*******--------
+----*********-------
+-----*******--------
+-----*******--------
+------*****---------
+--------*-----------
+--------------------
+--------------------
+--------------------
+********************
+********************
+********************
+********************
 ```
