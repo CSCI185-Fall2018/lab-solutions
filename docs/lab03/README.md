@@ -106,10 +106,28 @@ Pizza {size: Medium, cheese: Normal, toppings: Peppers}
 ### Part 3
 
 Create another program which reads a text file with the structure below and creates an array of pizzas.
-Have the program utilize the pizza builder and print out all the pizzas.
+Have the program utilize the pizza builder and print out all the pizzas. Afterwards create yet another program which writes an array of pizzas to a file.
+
 
 ```sh
 size,cheese,topping_count,topping1,topping2,...
 Small,Normal,0
 Medium,Extra,2,Onion,Sausage
+```
+
+For both of these programs the path of the file should not be hardcoded. Consider the code below which determines the file path.
+
+```java
+class ReadingDemo
+{
+    public static void main(String[] args)
+    {
+        if (args.length < 1)
+        {
+            System.error.println("missing file path");
+            return;
+        }
+        String file_path = args[0];
+    }
+}
 ```
