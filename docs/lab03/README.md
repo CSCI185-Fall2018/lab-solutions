@@ -108,6 +108,7 @@ Pizza {size: Medium, cheese: Normal, toppings: Peppers}
 Create another program which reads a text file with the structure below and creates an array of pizzas.
 Have the program utilize the pizza builder and print out all the pizzas. Afterwards create yet another program which writes an array of pizzas to a file.
 
+[file io examples](https://www.geeksforgeeks.org/file-class-in-java/)
 
 ```sh
 size,cheese,topping_count,topping1,topping2,...
