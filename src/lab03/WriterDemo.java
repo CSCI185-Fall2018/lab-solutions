@@ -31,7 +31,7 @@ public class WriterDemo
         {
             System.err.println("missing file path");
             System.out.print(">> ");
-            Scanner keyboard = new Scanner(System.in);
+            final Scanner keyboard = new Scanner(System.in);
             file_path = keyboard.nextLine();
             keyboard.close();
         }
@@ -43,7 +43,7 @@ public class WriterDemo
     static String pizzaToCSV(Pizza pizza)
     {
         int i = 0, n = pizza.toppings.length;
-        String[] values = new String[n+3];
+        final String[] values = new String[n+3];
         values[i++] = pizza.size.toString();
         values[i++] = pizza.cheese.toString();
         values[i++] = Integer.toString(n);
@@ -58,7 +58,7 @@ public class WriterDemo
         final String header = String.join(",", fields);
         try
         {
-            PrintWriter writer = new PrintWriter(file_path);
+            final PrintWriter writer = new PrintWriter(file_path);
             writer.println(header);
             for (Pizza pizza: pizzas)
                 writer.println(pizzaToCSV(pizza));
@@ -74,11 +74,11 @@ public class WriterDemo
 
     public static void main(String[] args)
     {
-        Pizza[] pizzas = buildPizzas();
+        final Pizza[] pizzas = buildPizzas();
         for (Pizza pizza: pizzas)
             System.out.println(pizza);
-        String file_path = readFilePath(args);
-        boolean success = writePizzas(pizzas, file_path);
+        final String file_path = readFilePath(args);
+        final boolean success = writePizzas(pizzas, file_path);
         if (!success)
             System.err.println("could not write file");
     }
