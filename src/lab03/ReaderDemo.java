@@ -1,5 +1,7 @@
 package lab03;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ReaderDemo
@@ -22,22 +24,63 @@ public class ReaderDemo
 
     static Pizza pizzaFromCSV(String line)
     {
-        return null;
+        final String[] values = line.split(",");
+        PizzaBuilder builder = new PizzaBuilder(Integer.parseInt(values[2]));
+        builder.withSize(values[0]).withCheese(values[1]);
+        for (int i=0; i<builder.toppings.length; i++)
+            builder.withTopping(values[i+3]);
+        return builder.build();
     }
 
-    static Pizza[] readPizzas(String file_path)
+    static int countFileLines(String file_path) throws FileNotFoundException
     {
-        return null;
+        final File file = new File(file_path);
+        final Scanner scanner = new Scanner(file);
+        // skip over header row
+        if (scanner.hasNextLine())
+            scanner.nextLine();
+        int count = 0;
+        while(scanner.hasNextLine())
+        {
+            final String line = scanner.nextLine();
+            if(!line.isEmpty())
+                count++;
+        }
+        scanner.close();
+        return count;
+    }
+
+    static Pizza[] loadPizzas(String file_path, int count) throws FileNotFoundException
+    {
+        final File file = new File(file_path);
+        final Scanner scanner = new Scanner(file);
+        // skip over header row
+        if (scanner.hasNextLine())
+            scanner.nextLine();
+        int index = 0;
+        final Pizza[] pizzas = new Pizza[count];
+        while(scanner.hasNextLine())
+        {
+            final String line = scanner.nextLine();
+            if(!line.isEmpty())
+                pizzas[index++] = pizzaFromCSV(line);
+        }
+        return pizzas;
     }
 
     public static void main(String[] args)
     {
-        String file_path = readFilePath(args);
-        Pizza[] pizzas = readPizzas(file_path);
-        if (pizzas != null)
+        final String file_path = readFilePath(args);
+        try
+        {
+            final int count = countFileLines(file_path);
+            final Pizza[] pizzas = loadPizzas(file_path, count);
             for (Pizza pizza: pizzas)
                 System.out.println(pizza);
-        else
+        }
+        catch (FileNotFoundException err)
+        {
             System.err.println("could not read file");
+        }
     }
 }
