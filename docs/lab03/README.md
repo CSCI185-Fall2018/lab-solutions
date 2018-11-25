@@ -125,7 +125,7 @@ class ReadingDemo
     {
         if (args.length < 1)
         {
-            System.error.println("missing file path");
+            System.err.println("missing file path");
             return;
         }
         String file_path = args[0];
