@@ -31,16 +31,31 @@ public class PizzaBuilder extends Pizza
         return this;
     }
 
+    public PizzaBuilder withSize(String size)
+    {
+        return withSize(Size.valueOf(size));
+    }
+
     public PizzaBuilder withCheese(Cheese cheese)
     {
         this.cheese = cheese;
         return this;
     }
 
+    public PizzaBuilder withCheese(String cheese)
+    {
+        return withCheese(Cheese.valueOf(cheese));
+    }
+
     public PizzaBuilder withTopping(Topping topping)
     {
         toppings[toppingCursor++] = topping;
         return this;
+    }
+
+    public PizzaBuilder withTopping(String topping)
+    {
+        return withTopping(Topping.valueOf(topping));
     }
 
     public PizzaBuilder withToppings(Topping[] toppings)
