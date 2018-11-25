@@ -49,9 +49,22 @@ public class PizzaBuilder extends Pizza
         return this;
     }
 
+    private Topping[] finalizeToppings()
+    {
+        int size = 0, index = 0;
+        for (Topping topping: toppings)
+            if (topping != null)
+                size++;
+        Topping[] output =  new Topping[size];
+        for (Topping topping: toppings)
+            if (topping != null)
+                output[index++] = topping;
+        return output;
+    }
+
     public Pizza build()
     {
-        return new Pizza(size, cheese, toppings);
+        return new Pizza(size, cheese, finalizeToppings());
     }
 
 }
