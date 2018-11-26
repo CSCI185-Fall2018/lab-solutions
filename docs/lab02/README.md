@@ -18,7 +18,7 @@ In this lab we will be creating shapes such as rectangles and circles and overla
 
 ### Part 1
 
-Create two interfaces called `Measurable` and `Drawable`. The measurable interface should have two methods for calculating the perimeter and area. The drawable interface should have two methods. The draw method with would simply print out the object to standard output. If the draw method is invoked with two integers, which represent a point, then it would return a boolean which indicated whether the object should be drawn.
+Create two interfaces called `Measurable` and `Drawable`. The measurable interface should have two methods for calculating the perimeter and area. The drawable interface should have two methods. The draw method with no parameters would simply print out the object to standard output. If the draw method is invoked with two integers, which represent a point, then it would return a boolean which indicates whether the object should be drawn.
 
 
 ### Part 2
